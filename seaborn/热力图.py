@@ -12,8 +12,11 @@ import seaborn as sns
 train_df = pd.read_csv("/Users/jianjun.yue/PycharmGItHub/data/house_price/house_price_train.csv",index_col = 0)
 var_set = ['SalePrice', 'OverallQual', 'GrLivArea', 'GarageCars', 'YearBuilt']
 
-# plt.figure(figsize=(10,10))
-sns.set(font_scale=0.8)  # 设置横纵坐标轴的字体大小
-sns.pairplot(train_df[var_set],size=1.2, palette="husl")  # 7*7图矩阵
-# plt.xticks(rotation=90)
+corrmat = train_df[var_set].corr()
+plt.subplots(figsize=(8, 6))
+# sns.heatmap(corrmat, vmax=.8, square=True);
+# 设置annot使其在小格内显示数字，annot_kws调整数字格式
+sns.heatmap(corrmat, annot=True, annot_kws={'size':9}, square=True);
+plt.xticks(rotation=90)
+plt.yticks(rotation=1)
 plt.show()
