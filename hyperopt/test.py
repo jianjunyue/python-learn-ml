@@ -1,24 +1,23 @@
-# define an objective function
-def objective(args):
-    case, val = args
-    if case == 'case 1':
-        return val
-    else:
-        return val ** 2
+import time
+import numpy as np
+from sklearn.datasets import load_digits
+from sklearn.svm import SVC
+from hyperopt import tpe
+from hpsklearn import HyperoptEstimator, any_classifier
+from hpsklearn import svc
 
-# define a search space
-from hyperopt import hp
-space = hp.choice('a',
-    [
-        ('case 1', 1 + hp.lognormal('c1', 0, 1)),
-        ('case 2', hp.uniform('c2', -10, 10))
-    ])
+digits = load_digits()
+X = digits.data
+y = digits.target
+test_size = int(0.2*len(y))
+np.random.seed(0)
+indices = np.random.permutation(len(X))
+X_train = X[indices[:-test_size]]
+y_train = y[indices[:-test_size]]
+X_test = X[indices[-test_size:]]
+y_test = y[indices[-test_size:]]
 
-# minimize the objective over the space
-from hyperopt import fmin, tpe
-best = fmin(objective, space, algo=tpe.suggest, max_evals=100)
-
-print(best)
-# -> {'a': 1, 'c2': 0.01420615366247227}
-print(tpe.space_eval(space, best))
-# -> ('case 2', 0.01420615366247227}
+estim = HyperoptEstimator(classifier=any_classifier('clf'),algo=tpe.suggest, seed=0)
+estim.fit(X_train,y_train)
+print(estim.score(X_test,y_test))
+print(estim.best_model())

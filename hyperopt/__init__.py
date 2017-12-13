@@ -1,4 +1,3 @@
-
 from hpsklearn import HyperoptEstimator, any_classifier
 from sklearn.datasets import fetch_mldata
 from hyperopt import tpe
