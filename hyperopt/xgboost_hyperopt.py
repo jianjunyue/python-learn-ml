@@ -13,7 +13,7 @@ from hyperopt import fmin, tpe, hp,space_eval,rand,Trials,partial,STATUS_OK
 
 def loadFile():
     data = pd.read_excel('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/训练.xlsx', header=0, encoding='utf-8')
-    data = data.values
+    # data = data.values
     return data
 
 data = loadFile()

@@ -6,6 +6,7 @@ from sklearn.model_selection import KFold
 # model
 from xgboost import XGBRegressor
 # from lightgbm import LGBMRegressor
+from sklearn.preprocessing import Imputer
 
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor, AdaBoostRegressor
@@ -25,12 +26,14 @@ print(len(quantity))
 train_df=train_df[quantity]
 X_train = Imputer().fit_transform(train_df)
 
-max_features = [.1,.3,.5,.7,.9,.99]
+max_features = [.1,.5,.9]
 test_scores = []
+print("test")
 for max_feat in max_features:
     clf = RandomForestRegressor(n_estimators = 200,max_features = max_feat)
     test_score = np.sqrt(-cross_val_score(clf,X_train,y_train,cv = 5,scoring = 'neg_mean_squared_error'))
     test_scores.append(np.mean(test_score))
+    print(test_score)
 plt.plot(max_features,test_scores)
 plt.title('Max Features vs CV Error')
 plt.show()
