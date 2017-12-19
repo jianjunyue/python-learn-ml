@@ -44,13 +44,13 @@ def getRange(start,stop,step):
         listTemp.append(i)
     return listTemp
 param_test1 = {
-    'n_estimators':getRange(100,1500,100),
-    'learning_rate':[0.01, 0.05, 0.08, 0.1, 0.15],
-    'max_depth':getRange(3,10,2),
-    'min_child_weight':getRange(1,6,2),
-    'subsample': [i / 10.0 for i in range(6, 10)],
-    'colsample_bytree': [i / 10.0 for i in range(6, 10)],
-    'reg_alpha': [1e-5, 1e-2, 0.1, 1, 100]
+    # 'n_estimators':range(100,1500,100),
+    # 'learning_rate':[0.01, 0.05, 0.08, 0.1, 0.15],
+    'max_depth':range(3,10,2),
+    # 'min_child_weight':range(1,6,2),
+    # 'subsample': [i / 10.0 for i in range(6, 10)],
+    # 'colsample_bytree': [i / 10.0 for i in range(6, 10)],
+    # 'reg_alpha': [1e-5, 1e-2, 0.1, 1, 100]
 }
 # xgb1 = XGBRegressor(subsample=0.8)
 # xgb1.fit(X_train, y_train)
@@ -63,11 +63,13 @@ print(gsearch1.best_params_)
 print("------------------------")
 print(gsearch1.best_score_)
 
+
+
 # predict_df=predict_df[quantity]
 # pred=xgb1.predict(predict_df)
 # pred_df=pd.DataFrame()
 # pred_df["pred"]=pred
-# pred_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_pred.csv', index=False, float_format='%.4f')
+# pred_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_pred.csv', index=False, float_format='%.9f')
 # print("---4----")
 # submission_df=pd.DataFrame()
 #
@@ -76,4 +78,4 @@ print(gsearch1.best_score_)
 # submission_df["id"]=submission_iddf["id"]
 # submission_df["pred"]=pred_df_TEMP["pred"]
 # print(submission_df.head(3))
-# submission_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_sub.csv',header=False, index=False, float_format='%.4f')
+# submission_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_sub.csv',header=False, index=False, float_format='%.9f')
