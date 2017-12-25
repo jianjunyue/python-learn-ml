@@ -18,3 +18,6 @@ from sklearn.svm import SVC
 from sklearn.cross_validation import KFold;
 
 #叠加多层（2）模型教程
+
+import sklearn
+print(sklearn.__version__)
