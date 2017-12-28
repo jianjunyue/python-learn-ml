@@ -1,5 +1,5 @@
-import numpy as np
 import pandas as pd
+import numpy as np
 # data precession
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import KFold
