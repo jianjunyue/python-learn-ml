@@ -5,3 +5,9 @@
 
 #java版libFFM
 #https://github.com/gaterslebenchen/JLibFFM
+
+#FFM原理理解与应用
+# http://blog.csdn.net/leisurehippo/article/details/74226111
+
+# FFM模型在点击率预估中的应用实践
+# http://blog.csdn.net/flying_sfeng/article/details/78739473
