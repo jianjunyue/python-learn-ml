@@ -7,6 +7,8 @@ from sklearn.model_selection import KFold,StratifiedKFold
 from xgboost import XGBRegressor
 # from lightgbm import LGBMRegressor
 
+from sklearn.learning_curve import learning_curve
+from sklearn.model_selection import cross_val_score
 import matplotlib.pyplot as plt
 from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVR
@@ -72,7 +74,22 @@ for param in params:
     test_scores.append(np.mean(test_score))
     print(np.mean(test_score))
 
-plt.plot(params, test_scores)
+
+df_quantity_param = df_quantity_temp[df_quantity_temp["value"] > 2]
+quantity = df_quantity_param["key"]
+print(len(quantity))
+X_train = train_df[quantity]
+train_sizes, train_loss, test_loss = learning_curve(XGBRegressor(seed=10),
+                                                    X_train, y_train, cv=5, scoring='neg_mean_squared_error',
+                                                        train_sizes=[0.1, 0.25, 0.5, 0.75, 1])
+# 训练误差均值
+train_loss_mean = -np.mean(train_loss, axis = 1)
+# 测试误差均值
+test_loss_mean = -np.mean(test_loss, axis = 1)
+
+plt.plot(train_sizes, train_loss_mean, 'o-', color = 'r', label = 'Training')
+plt.plot(train_sizes, test_loss_mean, 'o-', color = 'g', label = 'Cross-Validation')
+# plt.plot(params, test_scores)
 plt.title("quantity vs CV Error");
 plt.show()
 

@@ -7,6 +7,7 @@ from sklearn.model_selection import KFold
 from xgboost import XGBRegressor
 # from lightgbm import LGBMRegressor
 
+from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor, AdaBoostRegressor
 from sklearn.linear_model import LinearRegression
@@ -41,6 +42,10 @@ train_df=train_df[quantity]
 X_train=train_df
 print("---111----")
 xgb1 = XGBRegressor()
+test_score = np.sqrt(-cross_val_score(xgb1, train_df, y_train, cv=5, scoring='neg_mean_squared_error'))
+print("------test_score--------")
+print(test_score)
+print(np.mean(test_score))
 xgb1.fit(X_train, y_train)
 print("---2----")
 # predict_df=predict_df.drop(["ID"],axis=1)

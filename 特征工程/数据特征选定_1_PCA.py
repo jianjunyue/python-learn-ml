@@ -10,7 +10,7 @@ array = data.values
 X = array[:, 0:8]
 Y = array[:, 8]
 # 特征选定
-pca = PCA(n_components=3)
+pca = PCA()
 fit = pca.fit(X)
 print("解释方差：%s" % fit.explained_variance_ratio_)
 print(fit.components_)

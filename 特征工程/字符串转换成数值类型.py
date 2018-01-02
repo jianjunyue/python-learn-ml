@@ -9,7 +9,7 @@ value=["mall","room","group","data"]
 df["gender"]=value
 print(df)
 print("------")
-lb = preprocessing.LabelBinarizer()
+# lb = preprocessing.LabelBinarizer()
 # gender 改为 0-1 数值
 # df["gender"]= lb.fit_transform(df['gender'])
 
