@@ -4,7 +4,7 @@ import xgboost as xgb
 from xgboost.sklearn import XGBClassifier
 from sklearn import cross_validation, metrics
 from sklearn.grid_search import GridSearchCV
-
+from tqdm import tqdm
 import matplotlib.pylab as plt
 from matplotlib.pylab import rcParams
 

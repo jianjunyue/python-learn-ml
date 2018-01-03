@@ -66,4 +66,4 @@ pred_df_TEMP = pd.read_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造�
 submission_df["id"]=submission_iddf["id"]
 submission_df["pred"]=pred_df_TEMP["pred"]
 print(submission_df.head(3))
-submission_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_sub_1225.csv',header=False, index=False, float_format='%.9f')
+submission_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_sub_1225_XGBRegressor.csv',header=False, index=False, float_format='%.9f')

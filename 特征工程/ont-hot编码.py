@@ -27,8 +27,8 @@ pclass_dummies_titanic.rename(columns=rename_columns('gender_',pclass_dummies_ti
 print(type(pclass_dummies_titanic.columns) )
 
 print(rename_columns('gender_',pclass_dummies_titanic.columns))
-print(type({'A':'a', 'B':'b', 'C':'c'}))
-print("------")
+# print(type({'A':'a', 'B':'b', 'C':'c'}))
+print("------------------------")
 df = df.join(pclass_dummies_titanic)
 print(df)
 #

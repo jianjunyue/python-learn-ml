@@ -16,3 +16,13 @@ data_rescaledX = data_scaler.fit_transform(listdata)
 # 设定数据的打印格式
 # set_printoptions(precision=3)
 print(data_rescaledX)
+
+
+print("-------------------------------")
+
+listdata=np.array([[1],[3],[4]])
+print(listdata)
+data_rescaledX = data_scaler.fit_transform(listdata)
+# 设定数据的打印格式
+# set_printoptions(precision=3)
+print(data_rescaledX)

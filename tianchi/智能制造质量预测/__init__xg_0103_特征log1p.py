@@ -23,7 +23,10 @@ print(intersection)
 train_df = pd.read_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/训练处理get_dummies.csv',header=0,encoding='utf-8')
 
 predict_df = pd.read_excel('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A.xlsx',header=0,encoding='utf-8')
+# train_df = train_df.fillna(0.01)
+# predict_df = predict_df.fillna(0.01)
 predict_df = pd.get_dummies(predict_df)
+
 quantity_pre_1 = [attr for attr in predict_df.columns if predict_df.dtypes[attr] != 'object']
 quantity_1 = [attr for attr in train_df.columns if train_df.dtypes[attr] != 'object']  # 数值变量集合
 # print(type(quantity))
@@ -34,12 +37,16 @@ train_df=train_df.drop(["Y"], axis=1)
 print("---11----")
 train_df=train_df[quantity]
 predict_df=predict_df[quantity]
-
+np.seterr(divide='ignore', invalid='ignore')
 for column in quantity:
-    print("-------"+column+"-----------")
-    print(len(train_df.groupby(column).size()))
-    print(train_df.groupby(column).size())
-    print("----------------------------")
+    try:
+        count=len(train_df.groupby(column).size())
+        if count>10 :
+            train_df[column] = np.log1p(train_df[column])
+            predict_df[column] = np.log1p(predict_df[column])
+    except Exception as err:
+        print(err)
+
 
 X_train=train_df
 print("---111----")
@@ -65,4 +72,4 @@ pred_df_TEMP = pd.read_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造�
 submission_df["id"]=submission_iddf["id"]
 submission_df["pred"]=pred_df_TEMP["pred"]
 print(submission_df.head(3))
-submission_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_sub_0101特征正态分布.csv',header=False, index=False, float_format='%.9f')
+submission_df.to_csv('/Users/jianjun.yue/PycharmGItHub/data/智能制造质量预测/测试A-答案模板_sub_0103_log1p.csv',header=False, index=False, float_format='%.9f')
