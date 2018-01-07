@@ -17,7 +17,6 @@ data_rescaledX = data_scaler.fit_transform(listdata)
 # set_printoptions(precision=3)
 print(data_rescaledX)
 
-
 print("-------------------------------")
 
 listdata=np.array([[1],[3],[4]])
