@@ -41,3 +41,6 @@ mean_cols = data.mean()
 data = data.fillna(mean_cols)
 print(type(mean_cols))
 print(mean_cols)
+
+#特征处理 ok
+# http://blog.csdn.net/oxuzhenyi/article/details/57438667
