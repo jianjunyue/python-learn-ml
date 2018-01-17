@@ -10,7 +10,6 @@ from matplotlib.pylab import rcParams
 
 train=pd.read_csv("data/train.csv")
 test=pd.read_csv("data/test.csv")
-
 def clean_data(titanic):
     # Sex 预处理
     titanic.loc[titanic["Sex"] == 'male', "Sex"] = 0
