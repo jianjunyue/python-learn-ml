@@ -12,6 +12,8 @@ df["key_name"]=x
 df["count"]=y
 df["count1"]=y
 
+print(df.head(10))
+
 plt.figure(figsize=(8,6))
 
 plt.plot(range(len(df["key"].values)),  df["count"].values)
