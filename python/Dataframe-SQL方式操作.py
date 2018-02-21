@@ -38,7 +38,10 @@ df1=df
 df2=df
 # 2.方式
 # df2.rename(columns={'total_bill': 'total_bill2', 'tip': 'tip2', 'sex': 'sex2'}, inplace=True)
-# print(pd.merge(df1, df2, how='left', left_on='row_id', right_on='row_id')) # left join
+print(pd.merge(df1, df2, how='left', left_on='row_id', right_on='row_id')) # left join
+
+train_user = pd.merge(df1,df2,on='row_id')
+print(train_user)
 
 #order 支持多列order
 print("--------------order ----------------")
