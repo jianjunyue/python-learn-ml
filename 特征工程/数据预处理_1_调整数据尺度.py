@@ -8,7 +8,8 @@ from sklearn.preprocessing import MinMaxScaler
 print("--------以列为单位处理数据，列的转化值=列的实际值/(每列的最大值-每列的最少值)----------------------------")
 
 listdata=np.array([[1, 2],[2, 3],[3, 5]])
-listdata=np.array([[2],[3],[5]])
+# listdata=np.array([[2],[3],[5]])
+print(type(listdata))
 print(listdata)
 data_scaler = MinMaxScaler(feature_range=(0, 1))
 # 数据转换

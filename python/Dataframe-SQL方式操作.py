@@ -26,8 +26,8 @@ print("--------------distinct 去重----------------")
 # group
 print("--------------group ----------------")
 # print(df.groupby('sex').agg({'tip': np.max, 'total_bill': np.sum}))
-# print(df.groupby('sex').count())
-# print(df.groupby('sex')['tip'].count())
+# print(df.groupby('sex').size())  //分类统计
+# print(df.groupby('sex')['tip'].size())
 # as修改列的别名
 print("--------------as ----------------")
 # df.columns = ['total', 'pit', 'xes']
