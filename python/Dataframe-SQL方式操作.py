@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from pandasql import sqldf
 # 【Python实战】Pandas：让你像写SQL一样做数据分析（一）
 # https://www.cnblogs.com/en-heng/p/5630849.html
 # 【Python实战】Pandas：让你像写SQL一样做数据分析（二）
